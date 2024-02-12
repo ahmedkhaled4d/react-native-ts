@@ -14,12 +14,13 @@ const LotsOfStyles = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
+    marginTop: 200,
+    marginLeft: 100,
   },
   bigBlue: {
     color: 'blue',
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 50,
   },
   red: {
     color: 'red',
