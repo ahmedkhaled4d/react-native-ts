@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import type {PropsWithChildren} from 'react';
 
-const FlexDirectionBasics = () => {
-  const [flexDirection, setflexDirection] = useState('row');
+const DirectionLayout = () => {
+  const [direction, setDirection] = useState('ltr');
 
   return (
     <PreviewLayout
-      label="flexDirection"
-      values={['column', 'row', 'row-reverse', 'column-reverse']}
-      selectedValue={flexDirection}
-      setSelectedValue={setflexDirection}>
+      label="direction"
+      selectedValue={direction}
+      values={['ltr', 'rtl']}
+      setSelectedValue={setDirection}>
       <View style={[styles.box, {backgroundColor: 'powderblue'}]} />
       <View style={[styles.box, {backgroundColor: 'skyblue'}]} />
       <View style={[styles.box, {backgroundColor: 'steelblue'}]} />
@@ -32,7 +32,7 @@ const PreviewLayout = ({
   selectedValue,
   setSelectedValue,
 }: PreviewLayoutProps) => (
-  <View style={{padding: 30, flex: 1}}>
+  <View style={{padding: 10, flex: 1}}>
     <Text style={styles.label}>{label}</Text>
     <View style={styles.row}>
       {values.map(value => (
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   selected: {
-    backgroundColor: 'red',
+    backgroundColor: 'coral',
     borderWidth: 0,
   },
   buttonLabel: {
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FlexDirectionBasics;
+export default DirectionLayout;

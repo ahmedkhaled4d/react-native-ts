@@ -7,12 +7,26 @@
 
 import React from 'react';
 
-import LotsOfStyles from './pages/UI/LotsOfStyles';
-import FixedDimensionsBasics from './pages/UI/FixedDimensionsBasics';
-import Flex from './pages/UI/Flex';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from './pages/navigation/HomeScreen';
+import ProfileScreen from './pages/navigation/ProfileScreen';
+
+const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
-  return <Flex />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: 'Welcome 100'}}
+        />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 export default App;
