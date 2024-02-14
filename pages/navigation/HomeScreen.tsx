@@ -1,13 +1,19 @@
 import React from 'react';
 
-import {Button} from 'react-native';
+import {Button, View} from 'react-native';
 
 const HomeScreen = ({navigation}): React.JSX.Element => {
   return (
-    <Button
-      title="Go to Jane's profile"
-      onPress={() => navigation.navigate('Profile', {name: 'Jane'})}
-    />
+    <View style={{padding: 10}}>
+      <Button
+        title="Profile Screen"
+        onPress={() => navigation.navigate('Profile', {name: 'Jane'})}
+      />
+      <Button
+        title="Auth Screen"
+        onPress={() => navigation.navigate('Auth', {name: 'Jane'})}
+      />
+    </View>
   );
 };
 

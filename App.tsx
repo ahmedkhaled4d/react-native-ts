@@ -11,6 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './pages/navigation/HomeScreen';
 import ProfileScreen from './pages/navigation/ProfileScreen';
+import AuthScreen from './pages/navigation/AuthScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,9 +22,18 @@ function App(): React.JSX.Element {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Welcome 100'}}
+          options={{title: 'Home Screen'}}
         />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{title: 'Profile Screen'}}
+        />
+        <Stack.Screen
+          name="Auth"
+          component={AuthScreen}
+          options={{title: 'AuthScreen Screen'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
