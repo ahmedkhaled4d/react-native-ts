@@ -7,17 +7,26 @@
 
 import React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+  useTheme,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './pages/navigation/HomeScreen';
 import ProfileScreen from './pages/navigation/ProfileScreen';
 import AuthScreen from './pages/navigation/AuthScreen';
+import {useColorScheme} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
+  const scheme = useColorScheme();
+  const {colors} = useTheme();
+  console.log(colors);
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"

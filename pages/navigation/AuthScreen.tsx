@@ -1,71 +1,57 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
-  Button,
-  PermissionsAndroid,
-  SafeAreaView,
+  View,
   StyleSheet,
+  Text,
+  Dimensions,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Platform,
   TextInput,
+  Button,
+  Keyboard,
 } from 'react-native';
 
-const TextInputExample = () => {
-  const [text, onChangeText] = React.useState('Useless Text');
-  const [number, onChangeNumber] = React.useState('');
-
-  const requestCameraPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-        {
-          title: 'Cool Photo App Camera Permission',
-          message:
-            'Cool Photo App needs access to your camera ' +
-            'so you can take awesome pictures.',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('You can use the camera');
-      } else {
-        console.log('Camera permission denied');
-      }
-    } catch (err) {
-      console.warn(err);
-    }
-  };
-
+const AuthScreen = () => {
   return (
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-        autoFocus
-      />
-      <Button title="request permissions" onPress={requestCameraPermission} />
-    </SafeAreaView>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.inner}>
+          <Text style={styles.header}>Header</Text>
+          <TextInput placeholder="Username" style={styles.textInput} />
+          <View style={styles.btnContainer}>
+            <Button title="Submit" onPress={() => null} />
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  input: {
+  container: {
+    flex: 1,
+  },
+  inner: {
+    padding: 24,
+    flex: 1,
+    justifyContent: 'space-around',
+  },
+  header: {
+    fontSize: 36,
+    marginBottom: 48,
+  },
+  textInput: {
     height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+    borderColor: '#000000',
+    borderBottomWidth: 1,
+    marginBottom: 36,
+  },
+  btnContainer: {
+    backgroundColor: 'white',
+    marginTop: 12,
   },
 });
-
-const AuthScreen = () => {
-  return <TextInputExample />;
-};
-
 export default AuthScreen;
