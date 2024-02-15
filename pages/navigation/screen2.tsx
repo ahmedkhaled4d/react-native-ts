@@ -13,8 +13,8 @@ import type {StatusBarStyle} from 'react-native';
 const STYLES = ['default', 'dark-content', 'light-content'] as const;
 const TRANSITIONS = ['fade', 'slide', 'none'] as const;
 
-const screen2 = () => {
-  const [hidden, setHidden] = useState(false);
+const screen2 = (): React.JSX.Element => {
+  const [hidden, setHidden] = useState<boolean>(false);
   const [statusBarStyle, setStatusBarStyle] = useState<StatusBarStyle>(
     STYLES[0],
   );
